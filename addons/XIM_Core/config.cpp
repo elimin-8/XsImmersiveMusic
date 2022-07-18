@@ -27,21 +27,21 @@ class CfgVehicles
             class skipSong
             {
                 displayName = "Skip song";
-                condition = "((leader (group _player) == _player) or !isMultiplayer) and (!(group _player getVariable ['XIM_bMusicStopped', false]))";
+                condition = "((leader (group _player) == _player) or !isMultiplayer) and (!(group _player getVariable ['XIM_bMusicStopped', false])) and XIM_bSystemEnabled";
                 exceptions[] = {};
                 statement = "[_player,false] call XIM_fncPlayNext"; //DON'T USE TIMEOUT
             };
             class stopMusic
             {
                 displayName = "Stop music";
-                condition = "((leader (group _player) == _player) or !isMultiplayer) and (!(group _player getVariable ['XIM_bMusicStopped', false]))";
+                condition = "((leader (group _player) == _player) or !isMultiplayer) and (!(group _player getVariable ['XIM_bMusicStopped', false])) and XIM_bSystemEnabled";
                 exceptions[] = {};
                 statement = "[] call XIM_fncStopMusic";
             };
             class startMusic
             {
                 displayName = "Start music";
-                condition = "((leader (group _player) == _player) or !isMultiplayer) and (group _player getVariable ['XIM_bMusicStopped', false])";
+                condition = "((leader (group _player) == _player) or !isMultiplayer) and (group _player getVariable ['XIM_bMusicStopped', false]) and XIM_bSystemEnabled";
                 exceptions[] = {};
                 statement = "[] call XIM_fncStartMusic";
             };

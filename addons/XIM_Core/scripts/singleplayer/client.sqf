@@ -156,6 +156,11 @@ fncXIM_MusicRemote = {
 	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
 	private _sXIM_MusicType = "";
 
+	if !(XIM_bSystemEnabled) exitWith {}; 	//don't play music if entire system is stopped. Only this function has this for maximum 
+											//compatibility (i.e. able to start and stop system without restarting the mission), but consider doing this in all the functions for 
+											//performance gains (so XIM scripts are barely running so resources aren't wasted on calculating what music to play even if that music
+											//will never actually get played thanks to this line in fncXIM_MusicRemote)?
+
 	if (_bXIMCombatState) then { // if _bXIMCombatState is true
 
 		_sXIM_MusicType = "combat"; // then set the music type to combat
@@ -197,6 +202,11 @@ player setVariable ["XIM_bMusicStopped", false]; // set the XIM_bMusicStopped va
 ["ace_firedNonPlayerVehicle", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires inside a vehicle
 
 addMusicEventHandler ["MusicStart", {
+	
+	if !(XIM_bSystemEnabled) exitWith {}; 	//if mission has disabled XIM, they probably don't want the 'Now Playing' UI to pop up when Zeus/other script starts a song 
+											//then again, the 'Now Playing' UI is kinda cool and Zeus/other might want it on. Consider removing this line and just adding a disclaimer to
+											//'XIM_bSystemEnabled' in the CBA options that they also need to disable XIM_bNowPlayingEnabled if they want to hide the 'Now Playing' UI too.
+											
 	if (XIM_bNowPlayingEnabled) then
 	{
 		private _trackname = getText (configFile >> "CfgMusic" >> _this select 0 >> "name");
