@@ -5,7 +5,7 @@ if (isMultiplayer) then // if client is in multiplayer
 	if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
 	{
 		[
-            "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+            "XIM_bSystemEnabled", // the name of the variable which the output from the slider is assigned to
             "CHECKBOX", // interactive slider setting type
             ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus/other script handles music."], // name and tooltip for the setting
             ["XIM - X's Immersive Music", "Core"], // category the setting is in
@@ -110,7 +110,7 @@ if (isMultiplayer) then // if client is in multiplayer
     if (hasInterface) then // if the system has a "real player", false for dedicated and headless clients
 	{
         [
-            "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+            "XIM_bSystemEnabled", // the name of the variable which the output from the slider is assigned to
             "CHECKBOX", // interactive slider setting type
             ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus/other script handles music."], // name and tooltip for the setting
             ["XIM - X's Immersive Music", "Core"], // category the setting is in
@@ -216,7 +216,7 @@ if (isMultiplayer) then // if client is in multiplayer
 else // if client is in singleplayer
 {
     [
-        "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+        "XIM_bSystemEnabled", // the name of the variable which the output from the slider is assigned to
         "CHECKBOX", // interactive slider setting type
         ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus or another script handles music."], // name and tooltip for the setting
         ["XIM - X's Immersive Music", "Core"], // category the setting is in

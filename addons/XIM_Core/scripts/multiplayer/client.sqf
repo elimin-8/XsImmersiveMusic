@@ -27,9 +27,9 @@ XIM_fncStartMusic = // starts playing music for all clients in the group
 
 addMusicEventHandler ["MusicStart", {
 	
-	if !(XIM_systemEnabled) exitWith {}; 	//if mission has disabled XIM, they probably don't want the 'Now Playing' UI to pop up when Zeus/other script starts a song 
+	if !(XIM_bSystemEnabled) exitWith {}; 	//if mission has disabled XIM, they probably don't want the 'Now Playing' UI to pop up when Zeus/other script starts a song 
 											//then again, the 'Now Playing' UI is kinda cool and Zeus/other might want it on. Consider removing this line and just adding a disclaimer to
-											//'XIM_systemEnabled' in the CBA options that they also need to disable XIM_bNowPlayingEnabled if they want to hide the 'Now Playing' UI too.
+											//'XIM_bSystemEnabled' in the CBA options that they also need to disable XIM_bNowPlayingEnabled if they want to hide the 'Now Playing' UI too.
 	
 	if (XIM_bNowPlayingEnabled) then
 	{
