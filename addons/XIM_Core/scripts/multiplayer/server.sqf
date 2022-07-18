@@ -144,6 +144,11 @@ fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
 	private _groupOwnerIDs = []; // declare the empty array _groupOwnerIDs
 
+	if !(XIM_systemEnabled) exitWith {}; 	//don't tell clients to play music if entire system is stopped. Only this function has this for maximum 
+											//compatibility (i.e. able to start and stop system without restarting the mission), but consider doing this in all the functions for 
+											//performance gains (so XIM scripts are barely running so resources aren't wasted on calculating what music to play even if that music
+											//will never actually get played thanks to this line in fncXIM_MusicRemote)?
+
 	if (!(_gXIMGroup getVariable ["XIM_bMusicStopped", false])) then // if XIM_bMusicStopped is false
 	{
 		(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group

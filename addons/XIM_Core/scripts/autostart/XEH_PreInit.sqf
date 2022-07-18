@@ -5,6 +5,16 @@ if (isMultiplayer) then // if client is in multiplayer
 	if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
 	{
 		[
+            "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+            "CHECKBOX", // interactive slider setting type
+            ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus/other script handles music."], // name and tooltip for the setting
+            ["XIM - X's Immersive Music", "Core"], // category the setting is in
+            [true], // default value of true
+            1, // enables synchronising the variable across clients. It is better to keep this synchronized as this is a major setting even though some players might not want to use it — they can simply set their music volume to 0.
+            {} // executes nothing when the setting is changed, as it is not necessary
+        ] call cba_settings_fnc_init;
+        
+        [
             "XIM_bNowPlayingEnabled", // the name of the variable which the output from the slider is assigned to
             "CHECKBOX", // interactive slider setting type
             ["Enable 'Now Playing' UI", "Enable or disable the UI which displays the song currently playing when it starts."], // name and tooltip for the setting
@@ -99,6 +109,16 @@ if (isMultiplayer) then // if client is in multiplayer
 
     if (hasInterface) then // if the system has a "real player", false for dedicated and headless clients
 	{
+        [
+            "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+            "CHECKBOX", // interactive slider setting type
+            ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus/other script handles music."], // name and tooltip for the setting
+            ["XIM - X's Immersive Music", "Core"], // category the setting is in
+            [true], // default value of true
+            1, // enables synchronising the variable across clients. It is better to keep this synchronized as this is a major setting even though some players might not want to use it — they can simply set their music volume to 0.
+            {} // executes nothing when the setting is changed, as it is not necessary
+        ] call cba_settings_fnc_init;
+        
         [
             "XIM_bNowPlayingEnabled", // the name of the variable which the output from the slider is assigned to
             "CHECKBOX", // interactive slider setting type
@@ -195,6 +215,16 @@ if (isMultiplayer) then // if client is in multiplayer
 } 
 else // if client is in singleplayer
 {
+    [
+        "XIM_systemEnabled", // the name of the variable which the output from the slider is assigned to
+        "CHECKBOX", // interactive slider setting type
+        ["Enable the entire system", "Untick this box to disable music playing for missions where a Zeus or another script handles music."], // name and tooltip for the setting
+        ["XIM - X's Immersive Music", "Core"], // category the setting is in
+        [true], // default value of true
+        1, // enables synchronising the variable across clients. It is better to keep this synchronized as this is a major setting even though some players might not want to use it — they can simply set their music volume to 0.
+        {} // executes nothing when the setting is changed, as it is not necessary
+    ] call cba_settings_fnc_init;
+        
     [
         "XIM_iCombatRange", // the name of the variable which the output from the slider is assigned to
         "SLIDER", // interactive slider setting type
